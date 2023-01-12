@@ -32,4 +32,16 @@ export class CreateUserDto {
   @IsNotEmpty()
   @Length(11)
   cpf: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(5)
+  @MaxLength(15)
+  username: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(6)
+  @MaxLength(10)
+  password: string;
 }
