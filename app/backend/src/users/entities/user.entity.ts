@@ -4,6 +4,8 @@ export class User {
   phone: string;
   address: string;
   cpf: string;
+  username: string;
+  password: string;
   created: Date;
   updated: Date;
 }
