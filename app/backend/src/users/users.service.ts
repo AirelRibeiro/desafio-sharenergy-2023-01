@@ -18,7 +18,7 @@ export class UsersService {
     return this.userModel.find();
   }
 
-  async findOne(id: string): Promise<UserDocument> {
+  async findOne(id: string): Promise<UserDocument | undefined> {
     return this.userModel.findById(id);
   }
 
@@ -31,5 +31,9 @@ export class UsersService {
 
   async remove(id: string) {
     return this.userModel.findByIdAndRemove(id);
+  }
+
+  async findByUserName(username: string): Promise<UserDocument | undefined> {
+    return this.userModel.findOne({ username });
   }
 }
