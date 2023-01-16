@@ -15,7 +15,8 @@ export default function Login() {
   useEffect(() => {
     const userPreferences = recoverData();
     if (!userPreferences || userPreferences.remember === false) return;
-    if (!isTokenExpired(userPreferences.token)) return navigate('/users');
+    if (!isTokenExpired(userPreferences.token))
+      return navigate('/random-users');
     localStorage.removeItem('userPreferences');
   }, [navigate]);
 
@@ -32,7 +33,7 @@ export default function Login() {
           token: data.token,
           remember,
         });
-        return navigate('/users');
+        return navigate('/random-users');
       })
       .catch((err) => {
         console.log(err);
