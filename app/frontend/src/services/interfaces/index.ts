@@ -14,3 +14,11 @@ export interface IAlertProps {
   message: string;
   closeAlert: MouseEventHandler<HTMLButtonElement>;
 }
+
+export interface ISearchProps {
+  searchText: string;
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
+  clearSearch: React.MouseEventHandler<HTMLButtonElement>;
+  filterUsers: React.MouseEventHandler<HTMLButtonElement>;
+}
+
