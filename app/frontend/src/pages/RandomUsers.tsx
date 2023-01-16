@@ -4,6 +4,7 @@ import {
   ArrowLongRightIcon,
 } from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
+import Search from '../components/Search';
 import { requestRandomUsers } from '../services/helpers/apiRequests';
 import { IResult } from '../services/interfaces';
 
@@ -11,6 +12,7 @@ export default function RandomUsers() {
   const [users, setUsers] = useState<IResult[]>([]);
   const [usersToDisplay, setUsersToDisplay] = useState<IResult[]>([]);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState('');
   useEffect(() => {
     const requestUsers = async () => {
       const results = await requestRandomUsers()
@@ -22,9 +24,37 @@ export default function RandomUsers() {
     requestUsers();
   }, []);
 
+  const filterUsers = () => {
+    const filteredUsers = [...users].filter((u) => {
+      return (
+        u.email.includes(search) ||
+        u.login.username.includes(search) ||
+        u.name.first.includes(search) ||
+        u.name.last.includes(search)
+      );
+    });
+    if (filterUsers.length) {
+      setUsersToDisplay(filteredUsers);
+      setPage(1);
+    } else {
+    }
+  };
+
+  const clearSearch = () => {
+    setSearch('');
+    setUsersToDisplay([...users]);
+    setPage(1);
+  };
 
   return (
     <>
+      <Search
+        searchText={search}
+        setSearchText={setSearch}
+        clearSearch={clearSearch}
+        filterUsers={filterUsers}
+      />
+
       <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {usersToDisplay.length ? (
           usersToDisplay.slice((page - 1) * 30, page * 30).map((user) => (
