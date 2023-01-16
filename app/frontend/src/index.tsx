@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Login from './pages/Login';
+import Layout from './components/Layout';
+import RandomUsers from './pages/RandomUsers';
 
 const router = createBrowserRouter([
   {
@@ -10,8 +12,8 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: '/users',
-    element: <div>Users</div>,
+    path: '/random-users',
+    element: <Layout pageTitle={'Random Users'} page={<RandomUsers />} />,
   },
   {
     path: '/http-cats',
