@@ -5,6 +5,11 @@ export interface ILogin {
   password: string;
 }
 
+export interface IStorageUserData {
+  token: string;
+  remember: boolean;
+}
+
 export interface IAlertProps {
   message: string;
   closeAlert: MouseEventHandler<HTMLButtonElement>;
