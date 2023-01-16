@@ -5,10 +5,10 @@ export default function Alert({ message, closeAlert }: IAlertProps) {
   return (
     <div
       id="alert-2"
-      className="mb-4 flex w-2/5 self-center rounded-lg shadow ring-opacity-40 ring-lima ring-1 p-4"
+      className="mb-4 flex w-2/5 sm:w-fit self-center rounded-lg shadow ring-opacity-40 ring-lima ring-1 p-4 bg-white"
       role="alert"
     >
-      <p className="ml-3 text-center text-sm font-medium text-alga">
+      <p className="mx-3 text-center text-sm font-medium text-alga">
         {message}
       </p>
       <button
