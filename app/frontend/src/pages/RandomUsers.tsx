@@ -4,6 +4,7 @@ import {
   ArrowLongRightIcon,
 } from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
+import Alert from '../components/Alert';
 import Search from '../components/Search';
 import { requestRandomUsers } from '../services/helpers/apiRequests';
 import { IResult } from '../services/interfaces';
@@ -13,6 +14,8 @@ export default function RandomUsers() {
   const [usersToDisplay, setUsersToDisplay] = useState<IResult[]>([]);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
+  const [notFound, setNotFound] = useState(false);
+
   useEffect(() => {
     const requestUsers = async () => {
       const results = await requestRandomUsers()
@@ -37,6 +40,7 @@ export default function RandomUsers() {
       setUsersToDisplay(filteredUsers);
       setPage(1);
     } else {
+      setNotFound(true);
     }
   };
 
@@ -48,6 +52,12 @@ export default function RandomUsers() {
 
   return (
     <>
+      {notFound && (
+        <Alert
+          message="Nenhuma pessoa usuária correspondente encontrada!"
+          closeAlert={() => setNotFound(!notFound)}
+        />
+      )}
       <Search
         searchText={search}
         setSearchText={setSearch}
