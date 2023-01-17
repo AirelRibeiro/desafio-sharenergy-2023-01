@@ -13,11 +13,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/random-users',
-    element: <Layout pageTitle={'Random Users'} page={<RandomUsers />} />,
+    element: <Layout pageTitle={'Pessoas aleatórias'} page={<RandomUsers />} />,
   },
   {
     path: '/http-cats',
-    element: <div>HTTP Cats</div>,
+    element: <Layout pageTitle={'Gatos HTTP'} page={<HttpStatus />} />,
   },
   {
     path: '/randon-dogs',
