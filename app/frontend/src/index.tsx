@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import Login from './pages/Login';
 import Layout from './components/Layout';
 import RandomUsers from './pages/RandomUsers';
+import HttpStatus from './pages/HttpStatus';
+import RandomDogs from './pages/RandomDogs';
 
 const router = createBrowserRouter([
   {
@@ -20,8 +22,8 @@ const router = createBrowserRouter([
     element: <Layout pageTitle={'Gatos HTTP'} page={<HttpStatus />} />,
   },
   {
-    path: '/randon-dogs',
-    element: <div>Dogs</div>,
+    path: '/random-dogs',
+    element: <Layout pageTitle={'Lindos doguinhos'} page={<RandomDogs />} />,
   },
 ]);
 
