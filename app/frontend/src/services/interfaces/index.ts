@@ -27,6 +27,22 @@ export interface ILayout {
   page: ReactElement;
 }
 
+export interface IHttpStatus {
+  value: number;
+  name: string;
+}
+
+export interface ISelectHttpProps {
+  selected: IHttpStatus;
+  setSelected: React.Dispatch<React.SetStateAction<IHttpStatus>>;
+}
+
+export interface IHttpCatsProps {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  catStatus: IHttpStatus;
+}
+
 export interface IName {
   title: string;
   first: string;

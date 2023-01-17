@@ -8,9 +8,13 @@ module.exports = {
         middlegray: '#161c2d',
         alga: '#00a2a2',
       },
+      backgroundImage: {
+        randomCat: 'url("https://cataas.com/cat?width=600&he=300")',
+      },
     },
   },
   plugins: [
     require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
   ],
 };

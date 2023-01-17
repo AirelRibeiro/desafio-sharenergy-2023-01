@@ -5,7 +5,7 @@ import {
 } from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
 import Alert from '../components/Alert';
-import Search from '../components/Search';
+import Search from '../components/randomUsers/Search';
 import { requestRandomUsers } from '../services/helpers/apiRequests';
 import { IResult } from '../services/interfaces';
 

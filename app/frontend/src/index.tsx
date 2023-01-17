@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import Login from './pages/Login';
 import Layout from './components/Layout';
 import RandomUsers from './pages/RandomUsers';
+import HttpStatus from './pages/HttpStatus';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/http-cats',
-    element: <div>HTTP Cats</div>,
+    element: <Layout pageTitle={'HTTP Cats'} page={<HttpStatus />} />,
   },
   {
     path: '/randon-dogs',

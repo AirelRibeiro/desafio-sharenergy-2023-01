@@ -7,7 +7,7 @@ import { ILayout } from '../services/interfaces';
 
 const navigation = [
   { name: 'Users', href: '/random-users', current: true },
-  { name: 'HTTP-Cat', href: '/http-cats', current: false },
+  { name: 'HTTP-Cats', href: '/http-cats', current: false },
   { name: 'Random Dogs', href: '/random-dogs', current: false },
   { name: 'Clients Base', href: '/clients', current: false },
 ];
@@ -22,7 +22,7 @@ export default function Layout({ pageTitle, page }: ILayout) {
 
   return (
     <>
-      <div className="min-h-full">
+      <div className="min-h-full h-screen">
         <div className="bg-middlegray pb-32">
           <Disclosure as="nav" className="bg-middlegray">
             {({ open }) => (
@@ -153,7 +153,7 @@ export default function Layout({ pageTitle, page }: ILayout) {
         </div>
 
         <main className="-mt-36">
-          <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8 h-screen">
             {page}
           </div>
         </main>
