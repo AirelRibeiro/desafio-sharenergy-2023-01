@@ -32,6 +32,11 @@ export interface IHttpStatus {
   name: string;
 }
 
+export interface ISelectHttpProps {
+  selected: IHttpStatus;
+  setSelected: React.Dispatch<React.SetStateAction<IHttpStatus>>;
+}
+
 export interface IName {
   title: string;
   first: string;
