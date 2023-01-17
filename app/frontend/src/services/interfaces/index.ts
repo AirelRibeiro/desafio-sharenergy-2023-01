@@ -27,6 +27,11 @@ export interface ILayout {
   page: ReactElement;
 }
 
+export interface IHttpStatus {
+  value: number;
+  name: string;
+}
+
 export interface IName {
   title: string;
   first: string;
