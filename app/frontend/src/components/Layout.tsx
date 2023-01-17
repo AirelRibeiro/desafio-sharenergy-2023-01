@@ -6,9 +6,9 @@ import { ArrowLeftOnRectangleIcon } from '@heroicons/react/24/solid';
 import { ILayout } from '../services/interfaces';
 
 const navigation = [
-  { name: 'Users', href: '/random-users', current: true },
-  { name: 'HTTP-Cats', href: '/http-cats', current: false },
-  { name: 'Random Dogs', href: '/random-dogs', current: false },
+  { name: 'Pessoas aleatórias', href: '/random-users', current: true },
+  { name: 'Gatos HTTPets', href: '/http-cats', current: false },
+  { name: 'Lindos DOguinhos', href: '/random-dogs', current: false },
   { name: 'Clients Base', href: '/clients', current: false },
 ];
 
