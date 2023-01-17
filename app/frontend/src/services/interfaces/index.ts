@@ -37,6 +37,12 @@ export interface ISelectHttpProps {
   setSelected: React.Dispatch<React.SetStateAction<IHttpStatus>>;
 }
 
+export interface IHttpCatsProps {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  catStatus: IHttpStatus;
+}
+
 export interface IName {
   title: string;
   first: string;
