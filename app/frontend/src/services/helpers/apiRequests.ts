@@ -12,3 +12,8 @@ export async function requestRandomUsers() {
   );
   return data;
 }
+
+export async function requestRandomDogs() {
+  const { data } = await axios.get('https://random.dog/woof.json');
+  return data;
+}
