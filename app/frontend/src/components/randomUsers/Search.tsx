@@ -3,7 +3,7 @@ import {
   UsersIcon,
   TrashIcon,
 } from '@heroicons/react/20/solid';
-import { ISearchProps } from '../services/interfaces';
+import { ISearchProps } from '../../services/interfaces';
 
 export default function Search({
   searchText,
