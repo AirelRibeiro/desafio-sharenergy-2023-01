@@ -50,6 +50,15 @@ export interface IAddress {
   cep: string;
 }
 
+export interface IUsers {
+  id: string;
+  name: string;
+  username: string;
+  email: string;
+  age?: number;
+  image?: string;
+}
+
 export interface IName {
   title: string;
   first: string;
