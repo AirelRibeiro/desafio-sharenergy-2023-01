@@ -28,7 +28,14 @@ export class UsersService {
     id: string,
     updateUserDto: UpdateUserDto,
   ): Promise<UserDocument> {
-    return this.userModel.findByIdAndUpdate(id, updateUserDto);
+    if (updateUserDto.password) {
+      const password = Md5.init(updateUserDto.password);
+      return this.userModel.findByIdAndUpdate(id, {
+        ...updateUserDto,
+        password,
+      });
+    }
+    return this.userModel.findByIdAndUpdate(id, { updateUserDto });
   }
 
   async remove(id: string) {
