@@ -7,6 +7,7 @@ import Layout from './components/Layout';
 import RandomUsers from './pages/RandomUsers';
 import HttpStatus from './pages/HttpStatus';
 import RandomDogs from './pages/RandomDogs';
+import Clients from './pages/Clients';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: '/random-dogs',
     element: <Layout pageTitle={'Lindos doguinhos'} page={<RandomDogs />} />,
+  },
+  {
+    path: '/clients',
+    element: <Layout pageTitle={'Clientes'} page={<Clients />} />,
   },
 ]);
 
