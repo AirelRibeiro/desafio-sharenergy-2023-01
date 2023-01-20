@@ -81,6 +81,14 @@ export interface IUsersViewProps {
   page: number;
   options: boolean;
 }
+
+export interface IPaginationProps {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  totalDisplayed: number;
+  totalUsers: number;
+}
+
 export interface IName {
   title: string;
   first: string;
