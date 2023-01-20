@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsNotEmpty,
   IsString,
@@ -6,7 +7,31 @@ import {
   MinLength,
   Length,
   IsPhoneNumber,
+  IsObject,
 } from 'class-validator';
+
+export class Address {
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(15)
+  street: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(5)
+  city: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(15)
+  stateAndCountry: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @MinLength(5)
+  @MaxLength(8)
+  cep: string;
+}
 
 export class CreateUserDto {
   @IsString()
@@ -22,11 +47,9 @@ export class CreateUserDto {
   @IsNotEmpty()
   phone: string;
 
-  @IsString()
-  @IsNotEmpty()
-  @MinLength(10)
-  @MaxLength(50)
-  address: string;
+  @IsObject()
+  @Type(() => Address)
+  address: Address;
 
   @IsString()
   @IsNotEmpty()

@@ -16,8 +16,8 @@ export class User {
   @Prop({ required: true })
   phone: string;
 
-  @Prop({ required: true })
-  address: string;
+  @Prop({ required: true, type: Object })
+  address: object;
 
   @Prop({ required: true })
   cpf: string;
