@@ -43,6 +43,13 @@ export interface IHttpCatsProps {
   catStatus: IHttpStatus;
 }
 
+export interface IAddress {
+  street: string;
+  city: string;
+  stateAndCountry: string;
+  cep: string;
+}
+
 export interface IName {
   title: string;
   first: string;
