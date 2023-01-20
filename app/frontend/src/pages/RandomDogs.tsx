@@ -2,19 +2,24 @@ import { useEffect, useState } from 'react';
 import { requestRandomDogs } from '../services/helpers/apiRequests';
 
 export default function RandomDogs() {
-  const [urlDog, setUrlDog] = useState('');
+  const [urlDog, setUrlDog] = useState(
+    'https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'
+  );
   const [isVideo, setIsVideo] = useState(false);
 
   const requestUsers = async () => {
+    setUrlDog(
+      'https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700'
+    );
     const url = await requestRandomDogs()
       .then((data) => data.url)
       .catch((err) => console.log(err));
-    setUrlDog(url);
     if (url.endsWith('.mp4')) {
       setIsVideo(true);
     } else {
       setIsVideo(false);
     }
+    setUrlDog(url);
   };
 
   useEffect(() => {
