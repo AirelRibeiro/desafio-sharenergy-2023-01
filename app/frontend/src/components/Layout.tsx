@@ -8,8 +8,8 @@ import { ILayout } from '../services/interfaces';
 const navigation = [
   { name: 'Pessoas aleatórias', href: '/random-users', current: true },
   { name: 'Gatos HTTPets', href: '/http-cats', current: false },
-  { name: 'Lindos DOguinhos', href: '/random-dogs', current: false },
-  { name: 'Clients Base', href: '/clients', current: false },
+  { name: 'Lindos Doguinhos', href: '/random-dogs', current: false },
+  { name: 'Clientes', href: '/clients', current: false },
 ];
 
 function classNames(...classes: string[]) {
