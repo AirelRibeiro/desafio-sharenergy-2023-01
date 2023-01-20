@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactElement } from 'react';
+import React, { MouseEventHandler, ReactElement } from 'react';
 
 export interface ILogin {
   username: string;
@@ -87,6 +87,13 @@ export interface IPaginationProps {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   totalDisplayed: number;
   totalUsers: number;
+}
+
+export interface ISidebarProps {
+  title: string;
+  children: React.ReactElement;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface IName {
