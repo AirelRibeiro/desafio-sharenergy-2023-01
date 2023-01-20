@@ -27,23 +27,6 @@ export default function RandomUsers() {
     requestUsers();
   }, []);
 
-  const filterUsers = () => {
-    const filteredUsers = [...users].filter((u) => {
-      return (
-        u.email.includes(search) ||
-        u.login.username.includes(search) ||
-        u.name.first.includes(search) ||
-        u.name.last.includes(search)
-      );
-    });
-    if (filterUsers.length) {
-      setUsersToDisplay(filteredUsers);
-      setPage(1);
-    } else {
-      setNotFound(true);
-    }
-  };
-
   const clearSearch = () => {
     setSearch('');
     setUsersToDisplay([...users]);
@@ -62,7 +45,13 @@ export default function RandomUsers() {
         searchText={search}
         setSearchText={setSearch}
         clearSearch={clearSearch}
-        filterUsers={filterUsers}
+        filterUsers={() =>
+          filterUsers(users, search, {
+            setUsersToDisplay,
+            setPage,
+            setNotFound,
+          })
+        }
       />
 
       <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
