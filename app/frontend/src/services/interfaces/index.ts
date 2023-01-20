@@ -76,6 +76,11 @@ export interface IClientProps {
   address: IAddress;
 }
 
+export interface IUsersViewProps {
+  usersToDisplay: IUsers[];
+  page: number;
+  options: boolean;
+}
 export interface IName {
   title: string;
   first: string;
