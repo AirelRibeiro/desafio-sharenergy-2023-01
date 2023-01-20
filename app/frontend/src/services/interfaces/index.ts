@@ -67,6 +67,15 @@ export interface IClient {
   cpf: string;
 }
 
+export interface IClientProps {
+  userInformation: IClient;
+  changesFunction: {
+    handleChangeUser: React.ChangeEventHandler<HTMLInputElement>;
+    handleChangeAddress: React.ChangeEventHandler<HTMLInputElement>;
+  };
+  address: IAddress;
+}
+
 export interface IName {
   title: string;
   first: string;
