@@ -59,6 +59,14 @@ export interface IUsers {
   image?: string;
 }
 
+export interface IClient {
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  cpf: string;
+}
+
 export interface IName {
   title: string;
   first: string;
