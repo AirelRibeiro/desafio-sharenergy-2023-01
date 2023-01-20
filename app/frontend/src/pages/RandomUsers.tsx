@@ -1,10 +1,6 @@
-import { EnvelopeIcon } from '@heroicons/react/20/solid';
-import {
-  ArrowLongLeftIcon,
-  ArrowLongRightIcon,
-} from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
 import Alert from '../components/Alert';
+import Pagination from '../components/usersAndClients/Pagination';
 import Search from '../components/usersAndClients/Search';
 import UsersView from '../components/usersAndClients/UsersView';
 import { requestRandomUsers } from '../services/helpers/apiRequests';
@@ -62,6 +58,12 @@ export default function RandomUsers() {
         }
       />
       <UsersView usersToDisplay={usersToDisplay} page={page} options={false} />
+      <Pagination
+        page={page}
+        setPage={setPage}
+        totalDisplayed={30}
+        totalUsers={usersToDisplay.length}
+      />
     </>
   );
 }
