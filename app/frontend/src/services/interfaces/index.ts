@@ -60,11 +60,28 @@ export interface IUsers {
 }
 
 export interface IClient {
+  id?: string;
   name: string;
   username: string;
   email: string;
   phone: string;
   cpf: string;
+  password: string;
+}
+
+export interface IClientCreateFields extends IClient {
+  address: IAddress;
+}
+
+export interface IClientUpdateFields {
+  _id?: string;
+  name?: string;
+  username?: string;
+  email?: string;
+  phone?: string;
+  cpf?: string;
+  password?: string;
+  address?: IAddress;
 }
 
 export interface IClientProps {
@@ -74,12 +91,19 @@ export interface IClientProps {
     handleChangeAddress: React.ChangeEventHandler<HTMLInputElement>;
   };
   address: IAddress;
+  typeForm: string;
 }
 
 export interface IUsersViewProps {
-  usersToDisplay: IUsers[];
+  usersToDisplay: any[];
   page: number;
   options: boolean;
+  setClientInfo?: React.Dispatch<React.SetStateAction<IClient>>;
+  setOpenForm?: React.Dispatch<React.SetStateAction<boolean>>;
+  setAddressInfo?: React.Dispatch<React.SetStateAction<IAddress>>;
+  setTypeForm?: React.Dispatch<React.SetStateAction<string>>;
+  setOpentDetails?: React.Dispatch<React.SetStateAction<boolean>>;
+  setClientId?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface IPaginationProps {
