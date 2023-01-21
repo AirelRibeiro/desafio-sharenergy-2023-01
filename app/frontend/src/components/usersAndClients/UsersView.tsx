@@ -1,18 +1,35 @@
 import { EnvelopeIcon } from '@heroicons/react/20/solid';
+import { requestDeletClient } from '../../services/helpers/apiRequests';
 import { IUsersViewProps } from '../../services/interfaces';
 
 export default function UsersView({
   usersToDisplay,
   page,
   options,
+  setClientInfo,
+  setAddressInfo,
+  setOpenForm,
+  setTypeForm,
+  setClientId,
+  setOpentDetails,
 }: IUsersViewProps) {
+  const updateClient = (client: any) => {
+    if (setAddressInfo && setClientInfo && setOpenForm && setTypeForm) {
+      const { address, ...clientInformation } = client;
+      setClientInfo(clientInformation);
+      setAddressInfo(address);
+      setOpenForm(true);
+      setTypeForm('update');
+    }
+  };
+
   return (
     <>
       <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {usersToDisplay.length ? (
           usersToDisplay.slice((page - 1) * 30, page * 30).map((user) => (
             <li
-              key={user.id}
+              key={user.id || user._id}
               className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
             >
               <div className="flex w-full items-center justify-between space-x-6 p-6">
@@ -36,28 +53,43 @@ export default function UsersView({
                     alt={`Foto de ${user.name}`}
                   />
                 ) : (
-                  <div className="bg-lima flex-shrink-0 flex items-center justify-center w-16 text-middlegray text-sm font-medium rounded-l-md">
+                  <div className="bg-lima h-10 w-10 flex items-center justify-center text-middlegray text-sm font-medium rounded-full">
                     {user.name[0]}
                   </div>
                 )}
               </div>
               {options && (
-                <span className="isolate inline-flex rounded-md shadow-sm">
+                <span className="flex rounded-md self-center justify-center w-full shadow-sm">
                   <button
                     type="button"
-                    className="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    onClick={() => {
+                      if (setOpentDetails && setClientId) {
+                        setClientId(user._id);
+                        setOpentDetails(true);
+                      }
+                    }}
+                    className="relative inline-flex items-center rounded-l-md border border-lima bg-white px-4 py-2 text-sm font-medium text-middlegray hover:bg-gray-50 focus:z-10 focus:border-alga focus:outline-none focus:ring-1 focus:ring-lime-200"
                   >
                     Ver detalhes
                   </button>
                   <button
                     type="button"
-                    className="relative -ml-px inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    className="relative -ml-px inline-flex items-center border border-lima bg-white px-4 py-2 text-sm font-medium text-middlegray hover:bg-gray-50 focus:z-10 focus:border-alga focus:outline-none focus:ring-1 focus:ring-lime-200"
+                    onClick={() => updateClient(user)}
                   >
                     Atualizar
                   </button>
                   <button
                     type="button"
-                    className="relative -ml-px inline-flex items-center rounded-r-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    onClick={() => {
+                      return requestDeletClient(user._id)
+                        .then(() => {
+                          alert('Pessoa usuária excluída com sucesso');
+                          window.location.reload();
+                        })
+                        .catch((err) => alert(err.response.data.message));
+                    }}
+                    className="relative -ml-px inline-flex items-center rounded-r-md border border-lima bg-white px-4 py-2 text-sm font-medium text-middlegray hover:bg-gray-50 focus:z-10 focus:border-alga focus:outline-none focus:ring-1 focus:ring-lime-200"
                   >
                     Apagar
                   </button>
