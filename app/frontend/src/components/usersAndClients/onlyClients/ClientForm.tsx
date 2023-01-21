@@ -1,13 +1,37 @@
+import React from 'react';
+import {
+  requestCreateClient,
+  requestUpdateClient,
+} from '../../../services/helpers/apiRequests';
 import { IClientProps } from '../../../services/interfaces';
 
 export default function ClientForm({
   userInformation,
   changesFunction,
   address,
+  typeForm,
 }: IClientProps) {
+  const saveNewClient = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    const createdUser = await requestCreateClient({
+      ...userInformation,
+      address,
+    });
+    return createdUser;
+  };
+
+  const updateClient = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    const { password, ...clientInformation } = userInformation;
+    const updatedClient = await requestUpdateClient({
+      ...clientInformation,
+      address,
+    });
+    console.log('retornado da API após UPdate', updatedClient);
+  };
   return (
     <div className="lg:grid-cols-12 lg:gap-x-5 w-full">
-      <form action="#" method="POST">
+      <form>
         <div className="shadow sm:overflow-hidden sm:rounded-md">
           <div className="space-y-6 bg-white py-6 px-4 sm:p-6">
             <div className="grid grid-cols-6 gap-6">
@@ -51,15 +75,15 @@ export default function ClientForm({
 
               <div className="col-span-6 sm:col-span-4">
                 <label
-                  htmlFor="email-address"
+                  htmlFor="email"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Email
                 </label>
                 <input
                   type="text"
-                  name="email-address"
-                  id="email-address"
+                  name="email"
+                  id="email"
                   autoComplete="email"
                   placeholder="agnes.yreh@email.com"
                   value={userInformation.email}
@@ -67,6 +91,27 @@ export default function ClientForm({
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-alga focus:ring-lima sm:text-sm"
                 />
               </div>
+
+              {typeForm === 'create' && (
+                <div className="col-span-6 sm:col-span-2">
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Senha
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    autoComplete="password"
+                    placeholder="*******"
+                    value={userInformation.password}
+                    onChange={changesFunction.handleChangeUser}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-alga focus:ring-lima sm:text-sm"
+                  />
+                </div>
+              )}
 
               <div className="col-span-6 sm:col-span-3">
                 <label
@@ -146,15 +191,15 @@ export default function ClientForm({
 
               <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                 <label
-                  htmlFor="region"
+                  htmlFor="stateAndCountry"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Estado / País
                 </label>
                 <input
                   type="text"
-                  name="region"
-                  id="region"
+                  name="stateAndCountry"
+                  id="stateAndCountry"
                   autoComplete="address-level1"
                   placeholder="Minas Gerais/BR"
                   value={address.stateAndCountry}
@@ -184,12 +229,23 @@ export default function ClientForm({
             </div>
           </div>
           <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md border border-transparent bg-alga py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-lima focus:outline-none focus:ring-2 focus:ring-middlegray focus:ring-offset-2"
-            >
-              Salvar
-            </button>
+            {typeForm === 'create' ? (
+              <button
+                type="submit"
+                onClick={saveNewClient}
+                className="flex w-full justify-center rounded-md border border-transparent bg-alga py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-lima focus:outline-none focus:ring-2 focus:ring-middlegray focus:ring-offset-2"
+              >
+                Salvar
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md border border-transparent bg-alga py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-lima focus:outline-none focus:ring-2 focus:ring-middlegray focus:ring-offset-2"
+                onClick={updateClient}
+              >
+                Atulizar
+              </button>
+            )}
           </div>
         </div>
       </form>
