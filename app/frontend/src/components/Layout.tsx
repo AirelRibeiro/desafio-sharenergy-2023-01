@@ -6,10 +6,10 @@ import { ArrowLeftOnRectangleIcon } from '@heroicons/react/24/solid';
 import { ILayout } from '../services/interfaces';
 
 const navigation = [
-  { name: 'Users', href: '/random-users', current: true },
-  { name: 'HTTP-Cats', href: '/http-cats', current: false },
-  { name: 'Random Dogs', href: '/random-dogs', current: false },
-  { name: 'Clients Base', href: '/clients', current: false },
+  { name: 'Pessoas aleatórias', href: '/random-users', current: true },
+  { name: 'Gatos HTTPets', href: '/http-cats', current: false },
+  { name: 'Lindos Doguinhos', href: '/random-dogs', current: false },
+  { name: 'Clientes', href: '/clients', current: false },
 ];
 
 function classNames(...classes: string[]) {

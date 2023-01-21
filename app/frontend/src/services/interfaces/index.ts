@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactElement } from 'react';
+import React, { MouseEventHandler, ReactElement } from 'react';
 
 export interface ILogin {
   username: string;
@@ -41,6 +41,83 @@ export interface IHttpCatsProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   catStatus: IHttpStatus;
+}
+
+export interface IAddress {
+  street: string;
+  city: string;
+  stateAndCountry: string;
+  cep: string;
+}
+
+export interface IUsers {
+  id: string;
+  name: string;
+  username: string;
+  email: string;
+  age?: number;
+  image?: string;
+}
+
+export interface IClient {
+  id?: string;
+  name: string;
+  username: string;
+  email: string;
+  phone: string;
+  cpf: string;
+  password: string;
+}
+
+export interface IClientCreateFields extends IClient {
+  address: IAddress;
+}
+
+export interface IClientUpdateFields {
+  _id?: string;
+  name?: string;
+  username?: string;
+  email?: string;
+  phone?: string;
+  cpf?: string;
+  password?: string;
+  address?: IAddress;
+}
+
+export interface IClientProps {
+  userInformation: IClient;
+  changesFunction: {
+    handleChangeUser: React.ChangeEventHandler<HTMLInputElement>;
+    handleChangeAddress: React.ChangeEventHandler<HTMLInputElement>;
+  };
+  address: IAddress;
+  typeForm: string;
+}
+
+export interface IUsersViewProps {
+  usersToDisplay: any[];
+  page: number;
+  options: boolean;
+  setClientInfo?: React.Dispatch<React.SetStateAction<IClient>>;
+  setOpenForm?: React.Dispatch<React.SetStateAction<boolean>>;
+  setAddressInfo?: React.Dispatch<React.SetStateAction<IAddress>>;
+  setTypeForm?: React.Dispatch<React.SetStateAction<string>>;
+  setOpentDetails?: React.Dispatch<React.SetStateAction<boolean>>;
+  setClientId?: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface IPaginationProps {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  totalDisplayed: number;
+  totalUsers: number;
+}
+
+export interface ISidebarProps {
+  title: string;
+  children: React.ReactElement;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface IName {

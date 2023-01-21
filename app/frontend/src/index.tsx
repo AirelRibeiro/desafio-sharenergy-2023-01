@@ -6,6 +6,9 @@ import Login from './pages/Login';
 import Layout from './components/Layout';
 import RandomUsers from './pages/RandomUsers';
 import HttpStatus from './pages/HttpStatus';
+import RandomDogs from './pages/RandomDogs';
+import Clients from './pages/Clients';
+
 
 const router = createBrowserRouter([
   {
@@ -14,15 +17,21 @@ const router = createBrowserRouter([
   },
   {
     path: '/random-users',
-    element: <Layout pageTitle={'Random Users'} page={<RandomUsers />} />,
+    element: <Layout pageTitle={'Pessoas aleatórias'} page={<RandomUsers />} />,
   },
   {
     path: '/http-cats',
-    element: <Layout pageTitle={'HTTP Cats'} page={<HttpStatus />} />,
+
+    element: <Layout pageTitle={'Gatos HTTP'} page={<HttpStatus />} />,
+
   },
   {
-    path: '/randon-dogs',
-    element: <div>Dogs</div>,
+    path: '/random-dogs',
+    element: <Layout pageTitle={'Lindos doguinhos'} page={<RandomDogs />} />,
+  },
+  {
+    path: '/clients',
+    element: <Layout pageTitle={'Clientes'} page={<Clients />} />,
   },
 ]);
 
