@@ -9,6 +9,7 @@ import HttpStatus from './pages/HttpStatus';
 import RandomDogs from './pages/RandomDogs';
 import Clients from './pages/Clients';
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,7 +21,9 @@ const router = createBrowserRouter([
   },
   {
     path: '/http-cats',
+
     element: <Layout pageTitle={'Gatos HTTP'} page={<HttpStatus />} />,
+
   },
   {
     path: '/random-dogs',
